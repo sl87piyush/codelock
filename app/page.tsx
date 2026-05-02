@@ -12,6 +12,7 @@ import { SpacedRepetition } from "@/components/dashboard/spaced-repetition"
 import { AreasToImprove } from "@/components/dashboard/areas-to-improve"
 import { RevisionQueue } from "@/components/dashboard/revision-queue"
 import { StartSolving } from "@/components/dashboard/start-solving"
+import { MentorDashboardCard } from "@/components/mentor/mentor-dashboard-card"
 
 export default function Page() {
   return (
@@ -54,6 +55,7 @@ export default function Page() {
 
             {/* ============== RIGHT RAIL ============== */}
             <aside className="col-span-12 xl:col-span-4 flex flex-col gap-6 min-w-0">
+              <MentorDashboardCard />
               <DailyGoals />
               <RivalsNearby />
               <SpacedRepetition />

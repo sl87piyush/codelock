@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { OnboardingGate } from "@/components/mentor/onboarding-gate"
+import { FloatingAskMentor } from "@/components/mentor/floating-ask-mentor"
 import "./globals.css"
 
 const inter = Inter({
@@ -45,7 +47,9 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrains.variable} bg-void`}
     >
       <body className="font-sans antialiased min-h-screen text-text">
+        <OnboardingGate />
         {children}
+        <FloatingAskMentor />
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
