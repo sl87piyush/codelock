@@ -11,23 +11,30 @@ import { cn } from "@/lib/utils"
 
 export default function OnboardingQuestionsPage() {
   const router = useRouter()
-  const { state, setAnswers } = useOnboarding()
-
-  // Guard — if no mentor yet, push back.
-  useEffect(() => {
-    if (!state.mentorId && typeof window !== "undefined") {
-      router.replace("/onboarding/mentor")
-    }
-  }, [state.mentorId, router])
-
-  const mentor = getMentor(state.mentorId)
-  const accent = mentor.accent.hex
+  const { state, status, setAnswers } = useOnboarding()
 
   const [step, setStep] = useState(0)
-  const [local, setLocal] = useState<OnboardingAnswers>(state.answers ?? {})
+  const [local, setLocal] = useState<OnboardingAnswers>({})
+
+  // Sync local state when state.answers changes (after hydration)
+  useEffect(() => {
+    if (state.answers && Object.keys(state.answers).length > 0) {
+      setLocal(state.answers)
+    }
+  }, [state.answers])
+
+  // Guard — if no mentor yet, push back. Wait for status to be loaded first.
+  useEffect(() => {
+    if (status !== "loading" && !state.mentorId) {
+      router.replace("/onboarding/mentor")
+    }
+  }, [status, state.mentorId, router])
+
+  const mentor = state.mentorId ? getMentor(state.mentorId) : null
+  const accent = mentor?.accent.hex ?? "#00f0ff"
 
   const current = QUESTIONS[step]
-  const value = local[current.key]
+  const value = local[current?.key]
   const canNext = Boolean(value)
   const isLast = step === QUESTIONS.length - 1
 
@@ -55,6 +62,15 @@ export default function OnboardingQuestionsPage() {
     } else {
       setStep((s) => Math.max(0, s - 1))
     }
+  }
+
+  // Show loading while hydrating from localStorage
+  if (status === "loading" || !mentor) {
+    return (
+      <section className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neon border-t-transparent" />
+      </section>
+    )
   }
 
   return (
