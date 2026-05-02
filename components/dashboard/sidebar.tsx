@@ -35,7 +35,7 @@ type NavItem = {
 
 const MAIN: NavItem[] = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/", accent: "neon" },
-  { label: "Challenge Arena", icon: Swords, href: "#" },
+  { label: "Challenge Arena", icon: Swords, href: "/challenge-arena", badge: "NEW", accent: "ember" },
   { label: "Championship", icon: Crown, href: "#", badge: "NEW", accent: "ember" },
   { label: "Planner", icon: CalendarDays, href: "/planner" },
   { label: "Companies", icon: Building2, href: "/companies", badge: "NEW", accent: "neon" },
