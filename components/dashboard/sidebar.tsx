@@ -17,6 +17,7 @@ import {
   Shield,
   Activity,
   Users,
+  Sparkles,
   Award,
   History,
   Settings,
@@ -48,8 +49,9 @@ const MAIN: NavItem[] = [
 ]
 
 const MORE: NavItem[] = [
+  { label: "Mentor Chamber", icon: Sparkles, href: "/mentor", badge: "NEW", accent: "neon" },
   { label: "Activity Heatmap", icon: Activity, href: "#", badge: "NEW", accent: "ember" },
-  { label: "Lock-In Partner", icon: Users, href: "#" },
+  { label: "Lock-In Partner", icon: Users, href: "/partner", badge: "NEW", accent: "neon" },
   { label: "Hall of Champions", icon: Award, href: "#" },
   { label: "Battle History", icon: History, href: "#" },
   { label: "Settings", icon: Settings, href: "#" },
