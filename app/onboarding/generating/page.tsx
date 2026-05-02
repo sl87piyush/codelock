@@ -18,7 +18,7 @@ const PHASES = [
 
 export default function OnboardingGeneratingPage() {
   const router = useRouter()
-  const { state, status, setJourney, completeOnboarding } = useOnboarding()
+  const { state, status, completeOnboarding } = useOnboarding()
   
   const [phase, setPhase] = useState(0)
   const [showJourney, setShowJourney] = useState(false)
@@ -36,10 +36,7 @@ export default function OnboardingGeneratingPage() {
     [state.mentorId, state.answers],
   )
 
-  // Persist the journey on first render so refresh-mid-generation doesn't lose it.
-  useEffect(() => {
-    setJourney(journey)
-  }, [journey, setJourney])
+
 
   // Guard: must have a mentor. Wait for status to load and don't run if we're navigating away.
   useEffect(() => {
