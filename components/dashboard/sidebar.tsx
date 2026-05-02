@@ -44,7 +44,7 @@ const MAIN: NavItem[] = [
   { label: "Contests", icon: Trophy, href: "/contests", badge: "NEW", accent: "ember" },
   { label: "OA Arena", icon: ClipboardCheck, href: "/oa-arena", badge: "NEW", accent: "ember" },
   { label: "Leaderboard", icon: Medal, href: "/leaderboard" },
-  { label: "Clan Arena", icon: Shield, href: "#", badge: "NEW", accent: "ember" },
+  { label: "Clan Arena", icon: Shield, href: "/clans", badge: "NEW", accent: "ember" },
 ]
 
 const MORE: NavItem[] = [
