@@ -18,19 +18,22 @@ const PHASES = [
 
 export default function OnboardingGeneratingPage() {
   const router = useRouter()
-  const { state, setJourney, completeOnboarding } = useOnboarding()
+  const { state, status, setJourney, completeOnboarding } = useOnboarding()
+  
+  const [phase, setPhase] = useState(0)
+  const [showJourney, setShowJourney] = useState(false)
+  const [portalOpen, setPortalOpen] = useState(false)
+  const [navigatingAway, setNavigatingAway] = useState(false)
+
+  // Get mentor safely - use default during loading/missing
   const mentor = getMentor(state.mentorId)
   const accent = mentor.accent.hex
   const secondary = mentor.id === "rex" ? "#00f0ff" : "#ff6b1a"
 
-  const [phase, setPhase] = useState(0)
-  const [showJourney, setShowJourney] = useState(false)
-  const [portalOpen, setPortalOpen] = useState(false)
-
   // Compute the journey synchronously but reveal it gradually for drama.
   const journey = useMemo<PersonalJourney>(
-    () => buildJourney(mentor.id, state.answers ?? {}),
-    [mentor.id, state.answers],
+    () => buildJourney(state.mentorId ?? "astra", state.answers ?? {}),
+    [state.mentorId, state.answers],
   )
 
   // Persist the journey on first render so refresh-mid-generation doesn't lose it.
@@ -38,12 +41,13 @@ export default function OnboardingGeneratingPage() {
     setJourney(journey)
   }, [journey, setJourney])
 
-  // Guard: must have a mentor.
+  // Guard: must have a mentor. Wait for status to load and don't run if we're navigating away.
   useEffect(() => {
-    if (!state.mentorId && typeof window !== "undefined") {
+    if (navigatingAway) return
+    if (status !== "loading" && !state.mentorId) {
       router.replace("/onboarding/mentor")
     }
-  }, [state.mentorId, router])
+  }, [status, state.mentorId, router, navigatingAway])
 
   // Phase ticker: 4 lines, then reveal journey.
   useEffect(() => {
@@ -60,8 +64,18 @@ export default function OnboardingGeneratingPage() {
   }
 
   const finalize = () => {
+    setNavigatingAway(true)
     completeOnboarding(journey)
     router.push("/")
+  }
+
+  // Show loading while hydrating from localStorage (but not if we're navigating away)
+  if (!navigatingAway && (status === "loading" || !state.mentorId)) {
+    return (
+      <section className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neon border-t-transparent" />
+      </section>
+    )
   }
 
   return (
