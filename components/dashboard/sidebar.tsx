@@ -35,16 +35,16 @@ type NavItem = {
 
 const MAIN: NavItem[] = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/", accent: "neon" },
-  { label: "Challenge Arena", icon: Swords, href: "#" },
+  { label: "Challenge Arena", icon: Swords, href: "/challenge-arena", badge: "NEW", accent: "ember" },
   { label: "Championship", icon: Crown, href: "#", badge: "NEW", accent: "ember" },
   { label: "Planner", icon: CalendarDays, href: "/planner" },
-  { label: "Companies", icon: Building2, href: "#" },
+  { label: "Companies", icon: Building2, href: "/companies", badge: "NEW", accent: "neon" },
   { label: "Doubts", icon: HelpCircle, href: "/doubt" },
   { label: "Battle", icon: Target, href: "/battle", badge: "LIVE", accent: "ember" },
   { label: "Contests", icon: Trophy, href: "/contests", badge: "NEW", accent: "ember" },
   { label: "OA Arena", icon: ClipboardCheck, href: "/oa-arena", badge: "NEW", accent: "ember" },
   { label: "Leaderboard", icon: Medal, href: "/leaderboard" },
-  { label: "Clan Arena", icon: Shield, href: "#", badge: "NEW", accent: "ember" },
+  { label: "Clan Arena", icon: Shield, href: "/clans", badge: "NEW", accent: "ember" },
 ]
 
 const MORE: NavItem[] = [
