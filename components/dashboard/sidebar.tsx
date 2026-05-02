@@ -38,7 +38,7 @@ const MAIN: NavItem[] = [
   { label: "Challenge Arena", icon: Swords, href: "#" },
   { label: "Championship", icon: Crown, href: "#", badge: "NEW", accent: "ember" },
   { label: "Planner", icon: CalendarDays, href: "/planner" },
-  { label: "Companies", icon: Building2, href: "#" },
+  { label: "Companies", icon: Building2, href: "/companies", badge: "NEW", accent: "neon" },
   { label: "Doubts", icon: HelpCircle, href: "/doubt" },
   { label: "Battle", icon: Target, href: "/battle", badge: "LIVE", accent: "ember" },
   { label: "Contests", icon: Trophy, href: "/contests", badge: "NEW", accent: "ember" },
