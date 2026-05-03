@@ -53,7 +53,7 @@ const MORE: NavItem[] = [
   { label: "Activity Heatmap", icon: Activity, href: "#", badge: "NEW", accent: "ember" },
   { label: "Lock-In Partner", icon: Users, href: "/partner", badge: "NEW", accent: "neon" },
   { label: "Hall of Champions", icon: Award, href: "/hall-of-champions" },
-  { label: "Battle History", icon: History, href: "#" },
+  { label: "Battle History", icon: History, href: "/battle-history" },
   { label: "Settings", icon: Settings, href: "#" },
 ]
 
