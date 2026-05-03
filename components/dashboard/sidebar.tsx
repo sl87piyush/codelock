@@ -37,7 +37,7 @@ type NavItem = {
 const MAIN: NavItem[] = [
   { label: "Dashboard", icon: LayoutDashboard, href: "/", accent: "neon" },
   { label: "Challenge Arena", icon: Swords, href: "/challenge-arena", badge: "NEW", accent: "ember" },
-  { label: "Championship", icon: Crown, href: "#", badge: "NEW", accent: "ember" },
+  { label: "Championship", icon: Crown, href: "/championship", badge: "NEW", accent: "ember" },
   { label: "Planner", icon: CalendarDays, href: "/planner" },
   { label: "Companies", icon: Building2, href: "/companies", badge: "NEW", accent: "neon" },
   { label: "Doubts", icon: HelpCircle, href: "/doubt" },
@@ -52,7 +52,7 @@ const MORE: NavItem[] = [
   { label: "Mentor Chamber", icon: Sparkles, href: "/mentor", badge: "NEW", accent: "neon" },
   { label: "Activity Heatmap", icon: Activity, href: "#", badge: "NEW", accent: "ember" },
   { label: "Lock-In Partner", icon: Users, href: "/partner", badge: "NEW", accent: "neon" },
-  { label: "Hall of Champions", icon: Award, href: "#" },
+  { label: "Hall of Champions", icon: Award, href: "/hall-of-champions" },
   { label: "Battle History", icon: History, href: "#" },
   { label: "Settings", icon: Settings, href: "#" },
 ]
