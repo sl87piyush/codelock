@@ -279,8 +279,8 @@ function ModeBreakdownPanel({ stats }: { stats: HistoryStats }) {
         </span>
       </div>
       <div className="mt-3 flex flex-col gap-2.5">
-        {rows.map((r) => (
-          <ModeRow key={r.key} {...r} />
+        {rows.map(({ key, ...rest }) => (
+          <ModeRow key={key} {...rest} />
         ))}
       </div>
     </div>
